@@ -79,15 +79,14 @@ class EcKeyPairData extends KeyPairData implements EcKeyPair {
     required List<int> d,
     required this.x,
     required this.y,
-    required KeyPairType type,
+    required super.type,
     this.debugLabel,
   })  : _d = SensitiveBytes(d),
         publicKey = EcPublicKey(
           x: x,
           y: y,
           type: type,
-        ),
-        super(type: type);
+        );
 
   /// Elliptic curve private key component `d` (confidential).
   List<int> get d {
@@ -99,10 +98,7 @@ class EcKeyPairData extends KeyPairData implements EcKeyPair {
   }
 
   @override
-  int get hashCode =>
-      type.hashCode ^
-      constantTimeBytesEquality.hash(x) ^
-      constantTimeBytesEquality.hash(y);
+  int get hashCode => type.hashCode ^ constantTimeBytesEquality.hash(x) ^ constantTimeBytesEquality.hash(y);
 
   @override
   bool operator ==(other) {
@@ -252,8 +248,7 @@ class EcKeyPairData extends KeyPairData implements EcKeyPair {
     );
   }
 
-  static List<int> _ensureNumberLength(
-      List<int> bytes, int length, String name) {
+  static List<int> _ensureNumberLength(List<int> bytes, int length, String name) {
     if (bytes.length == length) {
       return bytes;
     }

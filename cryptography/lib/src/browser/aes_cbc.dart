@@ -17,8 +17,8 @@ import 'dart:typed_data';
 
 import 'package:cryptography_plus/cryptography_plus.dart';
 
-import '_javascript_bindings.dart' show jsArrayBufferFrom;
 import '_javascript_bindings.dart' as web_crypto;
+import '_javascript_bindings.dart' show jsArrayBufferFrom;
 import 'browser_secret_key.dart';
 
 /// AES-CBC implementation that uses _Web Cryptography API_ in browsers.
@@ -38,9 +38,9 @@ class BrowserAesCbc extends AesCbc {
   const BrowserAesCbc({
     required this.macAlgorithm,
     this.secretKeyLength = 32,
-    Random? random,
+    super.random,
   })  : _random = random,
-        super.constructor(random: random);
+        super.constructor();
 
   @override
   PaddingAlgorithm get paddingAlgorithm => PaddingAlgorithm.pkcs7;

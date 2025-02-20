@@ -16,8 +16,8 @@
 library web_crypto_api;
 
 import 'dart:convert' show base64Url;
-import 'dart:html' show CryptoKey;
 import 'dart:html' as html;
+import 'dart:html' show CryptoKey;
 import 'dart:typed_data';
 
 import 'package:js/js.dart';
@@ -26,8 +26,7 @@ import 'package:js/js_util.dart' show promiseToFuture;
 export 'dart:html' show CryptoKey;
 
 /// Note that browsers support Web Cryptography only in secure contexts.
-final bool isWebCryptoAvailable =
-    _subtle != null && (html.window.isSecureContext ?? false);
+final bool isWebCryptoAvailable = _subtle != null && (html.window.isSecureContext ?? false);
 
 @JS('crypto.subtle')
 external Object? get _subtle;
@@ -203,9 +202,7 @@ Future<CryptoKey> importKeyWhenRaw(
 ByteBuffer jsArrayBufferFrom(List<int> data) {
   // Avoid copying if possible
   //
-  if (data is Uint8List &&
-      data.offsetInBytes == 0 &&
-      data.lengthInBytes == data.buffer.lengthInBytes) {
+  if (data is Uint8List && data.offsetInBytes == 0 && data.lengthInBytes == data.buffer.lengthInBytes) {
     // We need to check the type because UnmodifiableByteBufferView would cause
     // an error.
     final buffer = data.buffer;

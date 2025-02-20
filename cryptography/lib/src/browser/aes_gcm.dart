@@ -19,8 +19,8 @@ import 'dart:typed_data';
 import 'package:cryptography_plus/cryptography_plus.dart';
 import 'package:cryptography_plus/src/browser/browser_secret_key.dart';
 
-import '_javascript_bindings.dart' show jsArrayBufferFrom;
 import '_javascript_bindings.dart' as web_crypto;
+import '_javascript_bindings.dart' show jsArrayBufferFrom;
 
 /// AES-GCM implementation that uses _Web Cryptography API_ in browsers.
 class BrowserAesGcm extends AesGcm implements StreamingCipher {
@@ -43,9 +43,9 @@ class BrowserAesGcm extends AesGcm implements StreamingCipher {
     this.secretKeyLength = 32,
     this.nonceLength = AesGcm.defaultNonceLength,
     this.fallback,
-    Random? random,
+    super.random,
   })  : _random = random,
-        super.constructor(random: random);
+        super.constructor();
 
   @override
   Future<List<int>> decrypt(

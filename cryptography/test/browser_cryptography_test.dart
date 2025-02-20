@@ -13,6 +13,8 @@
 // limitations under the License.
 
 @TestOn('chrome')
+library;
+
 import 'package:cryptography_plus/cryptography_plus.dart';
 import 'package:cryptography_plus/dart.dart';
 import 'package:cryptography_plus/src/browser/aes_cbc.dart';
@@ -74,9 +76,7 @@ void main() {
       );
     });
 
-    test(
-        'AesCbc.with256bits(..., paddingAlgorithm: somethingElse) is not BrowserAesCbc',
-        () {
+    test('AesCbc.with256bits(..., paddingAlgorithm: somethingElse) is not BrowserAesCbc', () {
       final algorithm = AesCbc.with256bits(
         macAlgorithm: MacAlgorithm.empty,
         paddingAlgorithm: PaddingAlgorithm.zero,

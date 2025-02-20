@@ -66,22 +66,10 @@ void aesDecryptBlock(
   var keyIndex = 4;
   final rounds = key.length ~/ 4 - 1;
   for (var round = 1; round < rounds; round++) {
-    final t0 = c0[0xFF & (v0 >> 24)] ^
-        c1[0xFF & (v3 >> 16)] ^
-        c2[0xFF & (v2 >> 8)] ^
-        c3[0xFF & v1];
-    final t1 = c0[0xFF & (v1 >> 24)] ^
-        c1[0xFF & (v0 >> 16)] ^
-        c2[0xFF & (v3 >> 8)] ^
-        c3[0xFF & (v2 >> 0)];
-    final t2 = c0[0xFF & (v2 >> 24)] ^
-        c1[0xFF & (v1 >> 16)] ^
-        c2[0xFF & (v0 >> 8)] ^
-        c3[0xFF & (v3 >> 0)];
-    final t3 = c0[0xFF & (v3 >> 24)] ^
-        c1[0xFF & (v2 >> 16)] ^
-        c2[0xFF & (v1 >> 8)] ^
-        c3[0xFF & (v0 >> 0)];
+    final t0 = c0[0xFF & (v0 >> 24)] ^ c1[0xFF & (v3 >> 16)] ^ c2[0xFF & (v2 >> 8)] ^ c3[0xFF & v1];
+    final t1 = c0[0xFF & (v1 >> 24)] ^ c1[0xFF & (v0 >> 16)] ^ c2[0xFF & (v3 >> 8)] ^ c3[0xFF & (v2 >> 0)];
+    final t2 = c0[0xFF & (v2 >> 24)] ^ c1[0xFF & (v1 >> 16)] ^ c2[0xFF & (v0 >> 8)] ^ c3[0xFF & (v3 >> 0)];
+    final t3 = c0[0xFF & (v3 >> 24)] ^ c1[0xFF & (v2 >> 16)] ^ c2[0xFF & (v1 >> 8)] ^ c3[0xFF & (v0 >> 0)];
     v0 = t0 ^ key[keyIndex + 0];
     v1 = t1 ^ key[keyIndex + 1];
     v2 = t2 ^ key[keyIndex + 2];
@@ -158,26 +146,13 @@ void aesEncryptBlock(
   var keyIndex = 4;
   final rounds = key.length ~/ 4 - 1;
   for (var round = 1; round < rounds; round++) {
-    final t0 = c0[0xFF & (v0 >> 24)] ^
-        c1[0xFF & (v1 >> 16)] ^
-        c2[0xFF & (v2 >> 8)] ^
-        c3[0xFF & v3] ^
-        key[keyIndex + 0];
-    final t1 = c0[0xFF & (v1 >> 24)] ^
-        c1[0xFF & (v2 >> 16)] ^
-        c2[0xFF & (v3 >> 8)] ^
-        c3[0xFF & (v0 >> 0)] ^
-        key[keyIndex + 1];
-    final t2 = c0[0xFF & (v2 >> 24)] ^
-        c1[0xFF & (v3 >> 16)] ^
-        c2[0xFF & (v0 >> 8)] ^
-        c3[0xFF & (v1 >> 0)] ^
-        key[keyIndex + 2];
-    final t3 = c0[0xFF & (v3 >> 24)] ^
-        c1[0xFF & (v0 >> 16)] ^
-        c2[0xFF & (v1 >> 8)] ^
-        c3[0xFF & (v2 >> 0)] ^
-        key[keyIndex + 3];
+    final t0 = c0[0xFF & (v0 >> 24)] ^ c1[0xFF & (v1 >> 16)] ^ c2[0xFF & (v2 >> 8)] ^ c3[0xFF & v3] ^ key[keyIndex + 0];
+    final t1 =
+        c0[0xFF & (v1 >> 24)] ^ c1[0xFF & (v2 >> 16)] ^ c2[0xFF & (v3 >> 8)] ^ c3[0xFF & (v0 >> 0)] ^ key[keyIndex + 1];
+    final t2 =
+        c0[0xFF & (v2 >> 24)] ^ c1[0xFF & (v3 >> 16)] ^ c2[0xFF & (v0 >> 8)] ^ c3[0xFF & (v1 >> 0)] ^ key[keyIndex + 2];
+    final t3 =
+        c0[0xFF & (v3 >> 24)] ^ c1[0xFF & (v0 >> 16)] ^ c2[0xFF & (v1 >> 8)] ^ c3[0xFF & (v2 >> 0)] ^ key[keyIndex + 3];
     v0 = t0;
     v1 = t1;
     v2 = t2;
@@ -241,10 +216,7 @@ Uint32List aesExpandKeyForDecrypting(SecretKeyData secretKeyData) {
     for (var j = 0; j < 4; j++) {
       var value = encryptingKey[encryptionKeyIndex + j];
       if (i > 0 && i < result.length - 4) {
-        value = d0[s[value >> 24]] ^
-            d1[s[0xFF & (value >> 16)]] ^
-            d2[s[0xFF & (value >> 8)]] ^
-            d3[s[0xFF & value]];
+        value = d0[s[value >> 24]] ^ d1[s[0xFF & (value >> 16)]] ^ d2[s[0xFF & (value >> 8)]] ^ d3[s[0xFF & value]];
       }
       result[i + j] = value;
     }
@@ -356,9 +328,9 @@ class _DartAesSecretKeyData extends SecretKeyData {
   Uint32List? _expandedBytesForDecrypting;
 
   _DartAesSecretKeyData(
-    List<int> bytes, {
-    bool overwriteWhenDestroyed = false,
-  }) : super(bytes, overwriteWhenDestroyed: overwriteWhenDestroyed);
+    super.bytes, {
+    super.overwriteWhenDestroyed,
+  });
 
   @override
   void destroy() {

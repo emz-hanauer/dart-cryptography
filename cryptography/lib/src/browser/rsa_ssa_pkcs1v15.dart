@@ -18,8 +18,7 @@ import 'dart:typed_data';
 import 'package:cryptography_plus/cryptography_plus.dart';
 
 import '_javascript_bindings.dart' as web_crypto;
-import '_javascript_bindings.dart'
-    show base64UrlDecodeUnmodifiable, base64UrlEncode, base64UrlEncodeMaybe;
+import '_javascript_bindings.dart' show base64UrlDecodeUnmodifiable, base64UrlEncode, base64UrlEncodeMaybe;
 import 'hash.dart';
 
 /// RSA-SSA-PKCS1v15 implementation that uses _Web Cryptography API_ in browsers.
@@ -209,9 +208,9 @@ class _BrowserRsaPublicKey extends RsaPublicKey {
     required this.jsCryptoKey,
     required this.webCryptoAlgorithm,
     required this.webCryptoHash,
-    required List<int> n,
-    required List<int> e,
-  }) : super(n: n, e: e);
+    required super.n,
+    required super.e,
+  });
 }
 
 class _BrowserRsaSsaPkcs1v15KeyPair extends KeyPair implements RsaKeyPair {

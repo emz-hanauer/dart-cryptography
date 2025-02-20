@@ -51,14 +51,14 @@ class FlutterAesGcm extends AesGcm with FlutterCipherMixin {
     required this.secretKeyLength,
     CryptographyChannelPolicy? channelPolicy,
     AesGcm? fallback,
-    Random? random,
+    super.random,
   })  : fallback = fallback ??
             BackgroundAesGcm(
               secretKeyLength: secretKeyLength,
               random: random,
             ),
         channelPolicy = channelPolicy ?? FlutterCipher.defaultChannelPolicy,
-        super.constructor(random: random);
+        super.constructor();
 
   /// Constructs Flutter-optimized [AesGcm] which will use 128-bit keys.
   ///
@@ -136,8 +136,7 @@ class FlutterAesGcm extends AesGcm with FlutterCipherMixin {
   //     key size 192 bits. Why?
   @override
   bool get isSupportedPlatform =>
-      FlutterCryptography.isPluginPresent &&
-      ((isAndroid && secretKeyLength != 24) || isCupertino);
+      FlutterCryptography.isPluginPresent && ((isAndroid && secretKeyLength != 24) || isCupertino);
 
   @override
   int get nonceLength => AesGcm.defaultNonceLength;

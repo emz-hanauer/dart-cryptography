@@ -66,8 +66,8 @@ abstract class AesCbc extends Cipher {
 
   /// Constructor for classes that extend this class.
   const AesCbc.constructor({
-    Random? random,
-  }) : super(random: random);
+    super.random,
+  });
 
   /// Constructs 128-bit AES-CBC.
   factory AesCbc.with128bits({
@@ -215,7 +215,7 @@ abstract class AesCtr extends StreamingCipher {
   static const int defaultCounterBits = 64;
 
   /// Constructor for classes that extend this class.
-  const AesCtr.constructor({Random? random}) : super(random: random);
+  const AesCtr.constructor({super.random});
 
   /// Constructs 128-bit AES-CTR.
   factory AesCtr.with128bits({
@@ -268,9 +268,7 @@ abstract class AesCtr extends StreamingCipher {
 
   @override
   bool operator ==(other) =>
-      other is AesCtr &&
-      secretKeyLength == other.secretKeyLength &&
-      macAlgorithm == other.macAlgorithm;
+      other is AesCtr && secretKeyLength == other.secretKeyLength && macAlgorithm == other.macAlgorithm;
 
   @override
   void checkParameters({
@@ -368,7 +366,7 @@ abstract class AesGcm extends Cipher {
   static const int defaultNonceLength = 12;
 
   /// Constructor for classes that extend this class.
-  const AesGcm.constructor({Random? random}) : super(random: random);
+  const AesGcm.constructor({super.random});
 
   factory AesGcm.with128bits({
     int nonceLength = AesGcm.defaultNonceLength,
@@ -418,9 +416,7 @@ abstract class AesGcm extends Cipher {
 
   @override
   bool operator ==(other) =>
-      other is AesGcm &&
-      secretKeyLength == other.secretKeyLength &&
-      nonceLength == other.nonceLength;
+      other is AesGcm && secretKeyLength == other.secretKeyLength && nonceLength == other.nonceLength;
 
   @override
   String toString() {
@@ -878,7 +874,7 @@ abstract class Chacha20 extends StreamingCipher {
   /// Constructor for classes that extend this class.
   ///
   /// Optional parameter [random] is used by [newSecretKey] and [newNonce].
-  const Chacha20.constructor({Random? random}) : super(random: random);
+  const Chacha20.constructor({super.random});
 
   /// Constructs ChaCha20-Poly1305-AEAD cipher
   /// (([RFC 7539](https://tools.ietf.org/html/rfc7539), also known as
@@ -936,8 +932,7 @@ abstract class Chacha20 extends StreamingCipher {
   int get secretKeyLength => 32;
 
   @override
-  bool operator ==(other) =>
-      other is Chacha20 && macAlgorithm == other.macAlgorithm;
+  bool operator ==(other) => other is Chacha20 && macAlgorithm == other.macAlgorithm;
 
   @override
   String toString() {
@@ -1127,8 +1122,7 @@ abstract class Ecdsa extends SignatureAlgorithm {
   Future<EcKeyPair> newKeyPairFromSeed(List<int> seed);
 
   @override
-  String toString() =>
-      '$runtimeType.p${keyPairType.ellipticBits}($hashAlgorithm)';
+  String toString() => '$runtimeType.p${keyPairType.ellipticBits}($hashAlgorithm)';
 }
 
 /// _Ed25519_ ([RFC 8032](https://tools.ietf.org/html/rfc8032)) signature
@@ -1284,8 +1278,7 @@ abstract class Hkdf extends KdfAlgorithm {
   int get outputLength;
 
   @override
-  bool operator ==(other) =>
-      other is Hkdf && hmac == other.hmac && outputLength == other.outputLength;
+  bool operator ==(other) => other is Hkdf && hmac == other.hmac && outputLength == other.outputLength;
 
   @override
   Future<SecretKeyData> deriveKey({
@@ -1415,8 +1408,7 @@ abstract class Hmac extends MacAlgorithm {
   int get macLength => hashAlgorithm.hashLengthInBytes;
 
   @override
-  bool operator ==(other) =>
-      other is Hmac && hashAlgorithm == other.hashAlgorithm;
+  bool operator ==(other) => other is Hmac && hashAlgorithm == other.hashAlgorithm;
 
   @override
   String toString() {
@@ -1532,10 +1524,7 @@ abstract class Pbkdf2 extends KdfAlgorithm {
 
   @override
   bool operator ==(other) =>
-      other is Pbkdf2 &&
-      iterations == other.iterations &&
-      bits == other.bits &&
-      macAlgorithm == other.macAlgorithm;
+      other is Pbkdf2 && iterations == other.iterations && bits == other.bits && macAlgorithm == other.macAlgorithm;
 
   @override
   String toString() {
@@ -1686,9 +1675,7 @@ abstract class RsaPss extends SignatureAlgorithm {
 
   @override
   bool operator ==(other) =>
-      other is RsaPss &&
-      hashAlgorithm == other.hashAlgorithm &&
-      nonceLengthInBytes == other.nonceLengthInBytes;
+      other is RsaPss && hashAlgorithm == other.hashAlgorithm && nonceLengthInBytes == other.nonceLengthInBytes;
 
   @override
   Future<RsaKeyPair> newKeyPair({
@@ -1697,8 +1684,7 @@ abstract class RsaPss extends SignatureAlgorithm {
   });
 
   @override
-  String toString() =>
-      '$runtimeType($hashAlgorithm, nonceLengthInBytes: $nonceLengthInBytes)';
+  String toString() => '$runtimeType($hashAlgorithm, nonceLengthInBytes: $nonceLengthInBytes)';
 }
 
 /// _RSA-SSA-PKCS1v15_ [SignatureAlgorithm].
@@ -1770,8 +1756,7 @@ abstract class RsaSsaPkcs1v15 extends SignatureAlgorithm {
   KeyPairType<KeyPairData, PublicKey> get keyPairType => KeyPairType.rsa;
 
   @override
-  bool operator ==(other) =>
-      other is RsaSsaPkcs1v15 && hashAlgorithm == other.hashAlgorithm;
+  bool operator ==(other) => other is RsaSsaPkcs1v15 && hashAlgorithm == other.hashAlgorithm;
 
   @override
   Future<RsaKeyPair> newKeyPair({
@@ -2107,7 +2092,7 @@ abstract class StreamingCipher extends Cipher {
   /// Constructor for subclasses.
   ///
   /// Optional parameter [random] is used by [newSecretKey] and [newNonce].
-  const StreamingCipher({Random? random}) : super(random: random);
+  const StreamingCipher({super.random});
 
   /// Decrypts a ciphertext.
   ///
@@ -2231,7 +2216,7 @@ abstract class Xchacha20 extends StreamingCipher {
   }
 
   /// Constructor for classes that extend this class.
-  const Xchacha20.constructor({Random? random}) : super(random: random);
+  const Xchacha20.constructor({super.random});
 
   /// _XAEAD_CHACHA20_POLY1305_ ([draft-irtf-cfrg-xchacha](https://tools.ietf.org/html/draft-arciszewski-xchacha-03)) cipher.
   ///
@@ -2251,8 +2236,7 @@ abstract class Xchacha20 extends StreamingCipher {
   int get secretKeyLength => 32;
 
   @override
-  bool operator ==(other) =>
-      other is Xchacha20 && macAlgorithm == other.macAlgorithm;
+  bool operator ==(other) => other is Xchacha20 && macAlgorithm == other.macAlgorithm;
 
   @override
   String toString() {

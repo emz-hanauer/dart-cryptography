@@ -51,14 +51,11 @@ class BackgroundAesGcm extends AesGcm with BackgroundCipherMixin {
     required this.secretKeyLength,
     this.nonceLength = AesGcm.defaultNonceLength,
     CryptographyChannelPolicy? channelPolicy,
-    Random? random,
-  })  : assert(secretKeyLength == 16 ||
-            secretKeyLength == 24 ||
-            secretKeyLength == 32),
-        channelPolicy = random != null
-            ? CryptographyChannelPolicy.never
-            : (channelPolicy ?? BackgroundCipher.defaultChannelPolicy),
-        super.constructor(random: random);
+    super.random,
+  })  : assert(secretKeyLength == 16 || secretKeyLength == 24 || secretKeyLength == 32),
+        channelPolicy =
+            random != null ? CryptographyChannelPolicy.never : (channelPolicy ?? BackgroundCipher.defaultChannelPolicy),
+        super.constructor();
 
   BackgroundAesGcm.with128bits({
     int nonceLength = AesGcm.defaultNonceLength,

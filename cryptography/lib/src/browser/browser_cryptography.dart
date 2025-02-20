@@ -33,8 +33,7 @@ import 'pbkdf2.dart';
 
 class BrowserCryptography extends DartCryptography {
   // Documented in browser_cryptography_when_not_browser.dart
-  static final Cryptography defaultInstance =
-      isSupported ? BrowserCryptography() : DartCryptography();
+  static final Cryptography defaultInstance = isSupported ? BrowserCryptography() : DartCryptography();
 
   /// @nodoc
   // TODO: Remove this
@@ -48,9 +47,8 @@ class BrowserCryptography extends DartCryptography {
 
   // Documented in browser_cryptography_when_not_browser.dart
   BrowserCryptography({
-    Random? random,
-  })  : _random = random,
-        super(random: random);
+    super.random,
+  }) : _random = random;
 
   @override
   AesCbc aesCbc({
@@ -59,9 +57,7 @@ class BrowserCryptography extends DartCryptography {
     int secretKeyLength = 32,
   }) {
     // Web Cryptography API supports only 128 and 256 bit keys.
-    if (isSupported &&
-        secretKeyLength != 24 &&
-        identical(paddingAlgorithm, PaddingAlgorithm.pkcs7)) {
+    if (isSupported && secretKeyLength != 24 && identical(paddingAlgorithm, PaddingAlgorithm.pkcs7)) {
       return BrowserAesCbc(
         macAlgorithm: macAlgorithm,
         secretKeyLength: secretKeyLength,
@@ -184,8 +180,7 @@ class BrowserCryptography extends DartCryptography {
   @override
   Hkdf hkdf({required Hmac hmac, required int outputLength}) {
     if (isSupported) {
-      if (BrowserHashAlgorithmMixin.hashAlgorithmNameFor(hmac.hashAlgorithm) !=
-          null) {
+      if (BrowserHashAlgorithmMixin.hashAlgorithmNameFor(hmac.hashAlgorithm) != null) {
         return BrowserHkdf(
           hmac: hmac,
           outputLength: outputLength,

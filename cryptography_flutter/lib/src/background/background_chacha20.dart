@@ -40,11 +40,10 @@ class BackgroundChacha extends Chacha20 with BackgroundCipherMixin {
   /// However, this disables the use of [compute].
   BackgroundChacha.poly1305Aead({
     CryptographyChannelPolicy? channelPolicy,
-    Random? random,
-  })  : channelPolicy = random != null
-            ? CryptographyChannelPolicy.never
-            : (channelPolicy ?? BackgroundCipher.defaultChannelPolicy),
-        super.constructor(random: random);
+    super.random,
+  })  : channelPolicy =
+            random != null ? CryptographyChannelPolicy.never : (channelPolicy ?? BackgroundCipher.defaultChannelPolicy),
+        super.constructor();
 
   @override
   MacAlgorithm get macAlgorithm => const DartChacha20Poly1305AeadMacAlgorithm();

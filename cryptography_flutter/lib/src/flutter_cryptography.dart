@@ -14,9 +14,9 @@
 
 import 'dart:math';
 
+import 'package:cryptography_flutter_plus/src/flutter/flutter_hmac.dart';
 import 'package:cryptography_plus/cryptography_plus.dart';
 import 'package:cryptography_plus/dart.dart';
-import 'package:cryptography_flutter_plus/src/flutter/flutter_hmac.dart';
 import 'package:flutter/foundation.dart';
 
 import '../cryptography_flutter_plus.dart';
@@ -41,20 +41,18 @@ import '_internal.dart';
 class FlutterCryptography extends BrowserCryptography {
   /// Either [FlutterCryptography] or [BrowserCryptography] depending on
   /// [FlutterCryptography.isPluginPresent].
-  static final Cryptography defaultInstance =
-      kIsWeb ? BrowserCryptography.defaultInstance : FlutterCryptography();
+  static final Cryptography defaultInstance = kIsWeb ? BrowserCryptography.defaultInstance : FlutterCryptography();
 
   /// Tells whether the current platform has a plugin.
   ///
   /// Only Android, iOS, and Mac OS X are supported at the moment.
-  static bool get isPluginPresent =>
-      !kIsWeb && !hasSeenMissingPluginException && (isAndroid || isCupertino);
+  static bool get isPluginPresent => !kIsWeb && !hasSeenMissingPluginException && (isAndroid || isCupertino);
 
   Chacha20? _chacha20Poly1305Aead;
   Ed25519? _ed25519;
   X25519? _x25519;
 
-  FlutterCryptography({Random? random}) : super(random: random);
+  FlutterCryptography({super.random});
 
   @override
   AesGcm aesGcm({
@@ -200,8 +198,7 @@ class FlutterCryptography extends BrowserCryptography {
   }
 
   @override
-  FlutterCryptography withRandom(Random? random) =>
-      FlutterCryptography(random: random);
+  FlutterCryptography withRandom(Random? random) => FlutterCryptography(random: random);
 
   @override
   X25519 x25519() {
