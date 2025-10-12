@@ -8,8 +8,25 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: "document code"
+      - name: monorepo docs
         run: dart doc
+        working-directory: ./
+      - name: cryptography docs
+        run: dart doc
+        working-directory: ./cryptography
+      - name: cryptography_flutter docs
+        run: dart doc
+        working-directory: ./cryptography_flutter
+      - name: cryptography_flutter_integration_test docs
+        run: dart doc
+        working-directory: ./cryptography_flutter_integration_test
+      - name: cryptography_test docs
+        run: dart doc
+        working-directory: ./cryptography_test
+      - name: jwk docs
+        run: dart doc
+        working-directory: ./jwk
+
       - name: Checkout
         uses: actions/checkout@v1
       - name: Publish "cryptography"
