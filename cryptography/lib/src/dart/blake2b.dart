@@ -16,7 +16,7 @@ import 'package:cryptography_plus/cryptography_plus.dart';
 import 'package:cryptography_plus/dart.dart';
 
 import 'blake2b_impl_vm.dart'
-    if (dart.library.html) 'blake2b_impl_browser.dart';
+    if (dart.library.js_interop) 'blake2b_impl_browser.dart';
 
 /// [Blake2b] implemented in pure Dart.
 ///

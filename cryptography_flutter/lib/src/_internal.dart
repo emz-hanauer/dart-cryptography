@@ -19,10 +19,10 @@ import 'package:flutter/services.dart';
 
 import '../cryptography_flutter_plus.dart';
 import '_internal_impl_non_browser.dart'
-    if (dart.library.html) '_internal_impl_browser.dart';
+    if (dart.library.js_interop) '_internal_impl_browser.dart';
 
 export '_internal_impl_non_browser.dart'
-    if (dart.library.html) '_internal_impl_browser.dart';
+    if (dart.library.js_interop) '_internal_impl_browser.dart';
 
 const MethodChannel _methodChannel = MethodChannel('cryptography_flutter');
 
