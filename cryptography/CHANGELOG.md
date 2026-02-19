@@ -1,3 +1,8 @@
+## 3.0.0
+
+- Avoid exception when checking whether a destroyed secret key is compared for
+  equality against a non-destroyed key.
+
 ## 2.7.1
 
 **Release of package under new name**
