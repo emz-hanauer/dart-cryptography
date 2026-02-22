@@ -3,17 +3,13 @@ name: Dart CI
 on: [push, pull_request]
 
 jobs:
-  test:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        sdk: [stable, beta, dev]
+  build:
+    runs-on: ubuntu-22.04
+    container:
+      image: gmeligio/flutter-android:3.41.2
     steps:
-      - uses: actions/checkout@v3
-      - uses: dart-lang/setup-dart@v1
-        with:
-          sdk: ${{ matrix.sdk }}
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Run tests (cryptography)
         run: dart test --platform vm
         working-directory: ./cryptography
