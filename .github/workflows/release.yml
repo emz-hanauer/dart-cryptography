@@ -10,9 +10,6 @@ jobs:
     container:
       image: gmeligio/flutter-android:3.41.2
     steps:
-      - name: monorepo docs
-        run: dart doc
-        working-directory: ./
       - name: cryptography docs
         run: dart doc
         working-directory: ./cryptography
