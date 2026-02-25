@@ -1,52 +1,18 @@
-name: Publish plugin
+name: Publish
 
 on:
-  release:
-    types: [published]
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+  push:
+    tags: ["v[0-9]+.[0-9]+.[0-9]+"]
 
 jobs:
   publish:
-    runs-on: ubuntu-latest
-    container:
-      image: gmeligio/flutter-android:3.41.2
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: cryptography docs
-        run: dart doc
-        working-directory: ./cryptography
-      - name: cryptography_flutter docs
-        run: dart doc
-        working-directory: ./cryptography_flutter
-      - name: cryptography_flutter_integration_test docs
-        run: dart doc
-        working-directory: ./cryptography_flutter_integration_test
-      - name: cryptography_test docs
-        run: dart doc
-        working-directory: ./cryptography_test
-      - name: jwk docs
-        run: dart doc
-        working-directory: ./jwk
-      - name: Publish "cryptography"
-        uses: k-paxian/dart-package-publisher@v1.6
-        with:
-          relativePath: cryptography
-          skipTests: true
-          accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
-          refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
-      - name: Publish "cryptography_flutter"
-        uses: k-paxian/dart-package-publisher@v1.6
-        with:
-          flutter: true
-          skipTests: true
-          relativePath: cryptography_flutter
-          accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
-          refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
-      - name: Publish "jwk"
-        uses: k-paxian/dart-package-publisher@v1.6
-        with:
-          flutter: true
-          skipTests: true
-          relativePath: jwk
-          accessToken: ${{ secrets.OAUTH_ACCESS_TOKEN }}
-          refreshToken: ${{ secrets.OAUTH_REFRESH_TOKEN }}
+    uses: dart-lang/ecosystem/.github/workflows/publish.yaml@main
+    with:
+      ignore-packages: pkgs/*_test
+      use-flutter: true
+    permissions:
+      id-token: write
+      pull-requests: write

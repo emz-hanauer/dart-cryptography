@@ -4,11 +4,10 @@ environment:
   sdk: ^3.5.0
 
 workspace:
-  # - apps\portfolio
-  - cryptography
-  - cryptography/example
-  - cryptography_flutter
-  - cryptography_flutter/example
-  - cryptography_flutter_integration_test
-  - cryptography_test
-  - jwk
+  - pkgs/cryptography
+  - pkgs/cryptography/example
+  - pkgs/cryptography_flutter
+  - pkgs/cryptography_flutter/example
+  - pkgs/cryptography_flutter_integration_test
+  - pkgs/cryptography_test
+  - pkgs/jwk

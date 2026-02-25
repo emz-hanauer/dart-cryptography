@@ -12,16 +12,16 @@ jobs:
         uses: actions/checkout@v3
       - name: Run tests (cryptography)
         run: dart test --platform vm
-        working-directory: ./cryptography
+        working-directory: ./pkgs/cryptography
       - name: Run tests (cryptography_test)
         run: dart test --platform vm
-        working-directory: ./cryptography_test
+        working-directory: ./pkgs/cryptography_test
       - name: Run tests (jwk)
         run: dart test --platform vm
-        working-directory: ./jwk
+        working-directory: ./pkgs/jwk
       - name: Analyze (cryptography)
         run: dart analyze
-        working-directory: ./cryptography
+        working-directory: ./pkgs/cryptography
       - name: Analyze (jwk)
         run: dart analyze
-        working-directory: ./jwk
+        working-directory: ./pkgs/jwk
