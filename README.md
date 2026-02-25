@@ -10,19 +10,19 @@ Open-sourced under the [Apache License 2.0](LICENSE).
 
 ## Packages
 
-- [cryptography_plus](./pkgs/cryptography)
+- [cryptography_plus](./pkgs/cryptography_plus)
   - Cryptography API for Dart / Flutter.
   - Contains cryptographic algorithm implementations written in pure Dart.
   - Contains cryptographic algorithm implementations that use Web Cryptography API in browsers.
-- [cryptography_flutter_plus](./pkgs/cryptography_flutter)
+- [cryptography_flutter_plus](./pkgs/cryptography_flutter_plus)
   - Contains cryptographic algorithm implementations that use operating system APIs in Android
     and Apple operating systems (iOS, Mac OS X, etc.).
 - [cryptography_flutter_integration_test](./pkgs/cryptography_flutter_integration_test)
   - Integration test project for "cryptography_flutter".
-- [cryptography_test](./pkgs/cryptography_flutter)
+- [cryptography_test](./pkgs/cryptography_test)
   - Cross-platform tests. Note that "cryptography" and "cryptography_flutter_integration_test"
     contain more tests than just these.
-- [jwk_plus](./pkgs/jwk)
+- [jwk_plus](./pkgs/jwk_plus)
   - JWK (JSON Web Key) encoding / decoding.
 
 ## Contributing
