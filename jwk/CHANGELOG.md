@@ -1,3 +1,7 @@
+## 1.0.0
+
+- major updates: new web apis, monorepo support, updated dependencies, packages and examples, pumped packages and sdks, and dart docs support by @Abdurrahman98XX in #15
+
 ## 0.2.4
 
 - Improves documentation.

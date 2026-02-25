@@ -1,3 +1,12 @@
+## 3.0.0
+
+- fix: iOS and macOS pod install issue by @MarlonJD in #1
+- fix incorrect platform constraint for ECDH by @hgrf in #7
+- major updates: new web apis, monorepo support, updated dependencies, packages and examples, pumped packages and sdks, and dart docs support by @Abdurrahman98XX in #15
+- fix: avoid comparing destroyed bytes by @natebosch in #19
+- fix: allow to use browser cryptography when in wasm by @dt-iohk in #17
+
+
 ## 2.7.1
 
 **Release of package under new name**

@@ -1,3 +1,9 @@
+## 3.0.0
+
+- fix: iOS and macOS pod install issue by @MarlonJD in #1
+- fix: incorrect platform constraint for ECDH by @hgrf in #7
+- major updates: new web apis, monorepo support, updated dependencies, packages and examples, pumped packages and sdks, and dart docs support by @Abdurrahman98XX in #15
+
 ## 2.3.4
 
 - **fix**(iOS, MacOS): compilation issue, rename podspec
