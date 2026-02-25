@@ -4,6 +4,8 @@ version: 1.0.0
 
 homepage: https://github.com/emz-hanauer/dart-cryptography
 
+publish_to: "none"
+
 description:
   A package for testing and benchmarking cryptographic algorithm implementations that
   implement "package:cryptography" interfaces.
