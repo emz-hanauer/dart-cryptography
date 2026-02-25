@@ -10,6 +10,8 @@ jobs:
     container:
       image: gmeligio/flutter-android:3.41.2
     steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: cryptography docs
         run: dart doc
         working-directory: ./cryptography
@@ -25,9 +27,6 @@ jobs:
       - name: jwk docs
         run: dart doc
         working-directory: ./jwk
-
-      - name: Checkout
-        uses: actions/checkout@v1
       - name: Publish "cryptography"
         uses: k-paxian/dart-package-publisher@v1.6
         with:
