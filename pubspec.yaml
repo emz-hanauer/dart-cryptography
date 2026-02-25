@@ -1,5 +1,7 @@
 name: cryptography
 
+publish_to: none
+
 environment:
   sdk: ^3.5.0
 
