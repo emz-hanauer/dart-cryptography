@@ -12,7 +12,9 @@ jobs:
     uses: dart-lang/ecosystem/.github/workflows/publish.yaml@main
     with:
       ignore-packages: pkgs/*_test
-      use-flutter: true
+      # currently not working as "true" ignores id-token and does not allow to publish to pub.dev
+      # flutter packages needs to be published manually
+      use-flutter: false
     permissions:
       id-token: write
       pull-requests: write
