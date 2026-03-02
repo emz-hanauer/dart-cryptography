@@ -13,9 +13,7 @@ jobs:
     uses: ./.github/workflows/publish-internal.yml
     with:
       ignore-packages: pkgs/*_test
-      # currently not working as "true" ignores id-token and does not allow to publish to pub.dev
-      # flutter packages needs to be published manually
-      use-flutter: false
+      use-flutter: true
     permissions:
       id-token: write
       pull-requests: write
