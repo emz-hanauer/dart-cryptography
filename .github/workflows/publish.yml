@@ -10,7 +10,7 @@ on:
 jobs:
   publish:
     #uses: dart-lang/ecosystem/.github/workflows/publish.yaml@main
-    uses: ./.github/workflows/publish-internal.yaml
+    uses: ./.github/workflows/publish-internal.yml
     with:
       ignore-packages: pkgs/*_test
       # currently not working as "true" ignores id-token and does not allow to publish to pub.dev
