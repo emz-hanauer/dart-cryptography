@@ -238,6 +238,13 @@ mixin BackgroundCipherMixin implements BackgroundCipher {
     return clearText;
   }
 
+  /// Encrypts a cleartext.
+  ///
+  /// The [clearText] will be converted to a [Uint8List] before encryption. If
+  /// the [clearText] contains any non-8-bit values, they will be truncated to 8
+  /// bits. See [Uint8List] for details.
+  ///
+  /// For other arguments, see [StreamingCipher.encrypt] and [Cipher.encrypt].
   @override
   Future<SecretBox> encrypt(
     List<int> clearText, {
