@@ -1,3 +1,7 @@
+## 3.0.2
+
+- fix: resotre Flutter <3.44.7 compatibility #26
+
 ## 3.0.1
 
 - fix: Flutter 3.44.7 compatibility
