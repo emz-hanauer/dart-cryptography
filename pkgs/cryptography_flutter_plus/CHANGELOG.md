@@ -1,3 +1,7 @@
+## 3.1.0
+
+- feat: add Swift Package Manager (SPM) support for iOS and macOS, keeping CocoaPods working for existing consumers #22
+
 ## 3.0.2
 
 - fix: resotre Flutter <3.44.7 compatibility #26
