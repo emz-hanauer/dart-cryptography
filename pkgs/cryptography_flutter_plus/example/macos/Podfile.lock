@@ -14,7 +14,7 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral
 
 SPEC CHECKSUMS:
-  cryptography_flutter_plus: 7c6e0d0f08664499a2c5402aa7cbcca07f2a7130
+  cryptography_flutter_plus: b790cf76f050be15566d4ae320574b35cff72d1e
   FlutterMacOS: d0db08ddef1a9af05a5ec4b724367152bb0500b1
 
 PODFILE CHECKSUM: 54d867c82ac51cbd61b565781b9fada492027009

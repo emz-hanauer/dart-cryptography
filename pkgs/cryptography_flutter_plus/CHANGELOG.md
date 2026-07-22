@@ -1,3 +1,7 @@
+## 3.0.1
+
+- fix: Flutter 3.44.7 compatibility
+
 ## 3.0.0
 
 - fix: iOS and macOS pod install issue by @MarlonJD in #1
