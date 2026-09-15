@@ -1,3 +1,7 @@
+## 3.2.0
+
+- feat: Migrate to built-in kotlin, AGP 9 support #27 #29 
+
 ## 3.1.0
 
 - feat: add Swift Package Manager (SPM) support for iOS and macOS, keeping CocoaPods working for existing consumers #22
